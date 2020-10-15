@@ -1,0 +1,49 @@
+<template>
+    <lightning-card title="Api Call" icon-name="custom:custom63">
+
+        <div class="slds-m-around_medium">
+          
+          <lightning-layout vertical-align="end" class="slds-m-bottom_medium_small">
+            <lightning-layout-item flexibility="grow">
+          <div class="slds-m-bottom_small">
+              <lightning-input type="search"
+                 value={searchKey}
+                 label="Search Contact Name"
+                 onchange={handleSearchKeyChange}
+              ></lightning-input>
+           </div>
+          </lightning-layout-item >
+
+          <lightning-layout-item class="slds-p-left_xx-small">
+          
+           <lightning-button 
+              label="Search"
+              onclick={handleSearchClick}
+              ></lightning-button>
+              
+          </lightning-layout-item >
+      </lightning-layout>
+
+      <template if:true={books}>
+        <template for:each={books.items} for:item="book">
+            <p key={book.id}>{book.volumeInfo.title}</p>
+        </template>
+
+      <template if:true={error}>
+       <c-error-panel errors={error}></c-error-panel>
+
+      </template>
+    </template>
+    </div>
+    <c-view-source source="lwc/miscRestApiCall" slot="footer">
+      <a
+      href="http://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"
+      target="_blank"
+      >
+       Fetch Api
+      </a>
+    </c-view-source>
+    
+     
+    </lightning-card>
+</template>
